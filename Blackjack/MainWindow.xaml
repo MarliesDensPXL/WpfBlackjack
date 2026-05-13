@@ -29,56 +29,71 @@
             </LinearGradientBrush>
         </Grid.Background>
 
-        <GroupBox Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Header="Game">
+        <GroupBox Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Header="Game" Margin="5">
             <StackPanel>
-                <Button Content="New Game" />
+                <Button Content="New Game" Margin="10" Background="Green"/>
                 <Separator/>
-                <TextBlock Text="Credits:"/>
-                <TextBlock Text="500"/>
+                <TextBlock Text="Credits:" Margin="10"/>
+                <TextBlock Text="500" HorizontalAlignment="Right" FontSize="28" Margin="10"/>
                 
             </StackPanel>           
         </GroupBox>
-        <GroupBox Grid.Row="0" Grid.Column="1" Header="Bank">
-            <StackPanel x:Name="bankStack"/>
+        <GroupBox Grid.Row="0" Grid.Column="1" Header="Bank" Margin="5">
+            <StackPanel Orientation="Horizontal" x:Name="bankStack" Margin="5" Width="910" Height="170">
+
+            </StackPanel>
 
         </GroupBox>        
-        <Grid Grid.Row="1" Grid.Column="1" >
+        <Grid Grid.Row="1" Grid.Column="1" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0" Orientation="Vertical">
-                <TextBlock Text="Place your bet" Margin="10"/>
-                <TextBox Background="White" Margin="10"/>
-                <Button Content="Play" Background="Green" x:Name="playButton" Visibility="Visible" Margin="10"/>
+            <Grid x:Name="resultGrid" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3" Visibility="Hidden">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" />
+                <Button Grid.Row="1" x:Name="newRoundButton" Content="Next" HorizontalAlignment="Right" Background="Green" Width="150" Margin="10"/>
+                <Button Grid.Row="1" x:Name="stopGameButton" Content="Stop" HorizontalAlignment="Left" Background="Red" Width="150" Margin="10"/>
+            </Grid>
+            <StackPanel Grid.Column="0" Grid.Row="1" x:Name="playerBetPanel" Orientation="Vertical" Margin="5" >
+                <TextBlock Text="Place your bet" HorizontalAlignment="Center" Width="120" Margin="10"/>
+                <TextBox Background="White" Margin="10" Width="120"/>
+                <Button Content="Play" Background="Green" x:Name="playButton" Width="120" Visibility="Visible" Margin="10"/>
             </StackPanel>
-            <StackPanel x:Name="playerBetPanel" Grid.Column="1">
-                <Grid>
-                    <Image Source="/Images/back.png" Margin="10"/>
-                    <TextBlock x:Name="remainingCardsTextBlock" Text="52" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48"/>
-                </Grid>                
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
+            
+            <Image Grid.Column="1" Grid.Row="1" Source="/Images/back.png" Margin="10"/>
+            <TextBlock Grid.Column="1" Grid.Row="1" x:Name="remainingCardsTextBlock" Text="52" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48"/>
+            <TextBlock Grid.Row="0" Grid.Column="2" x:Name="bankPointsTextBlock" HorizontalAlignment="Right" Text="0" FontSize="28" Margin="10"/>
+            <TextBlock Grid.Row="2" Grid.Column="2" x:Name="playerPointsTextBlock" HorizontalAlignment="Right" Text="0" FontSize="28" Margin="10"/>
+            <Grid Grid.Row="2" Grid.Column="1"  x:Name="actionsGrid" Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
 
-                    <Button Grid.Column="0" x:Name="cardButton" Content="Card" Background="Green" Margin="10"/>
-                    <Button Grid.Column="1" x:Name="stopButton" Content="Stop" Background="Red" Margin="10"/>
+                <Button Grid.Column="0" x:Name="cardButton" Content="Card" Background="Green" Margin="5"/>
+                <Button Grid.Column="1" x:Name="stopButton" Content="Stop" Background="Red" Margin="5"/>
 
-                </Grid>
-            </StackPanel>
-            <DockPanel x:Name="resultPanel" Margin="5">
-                <TextBlock DockPanel.Dock="Top" x:Name="bankPointsTextBlock" Text="0" Margin="10"/>
-                <TextBlock DockPanel.Dock="Bottom" x:Name="playerPointsTextBlock" Text="0" Margin="10"/>
-            </DockPanel>
+            </Grid>          
             
             
         </Grid>
-        <GroupBox Grid.Row="2" Grid.Column="1" Header="Player">
-            <StackPanel x:Name="playerStack"/>
+        <GroupBox Grid.Row="2" Grid.Column="1" Header="Player" Margin="5">
+            <StackPanel Orientation="Horizontal" x:Name="playerStack" Margin="5" Width="910" Height="170">
+
+            </StackPanel>
+
         </GroupBox>
 
     </Grid>
